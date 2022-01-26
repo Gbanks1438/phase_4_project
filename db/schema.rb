@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2022_01_25_193542) do
   end
 
   create_table "products", force: :cascade do |t|
+    t.string "image_url"
     t.string "name"
     t.string "brand"
     t.string "category"

@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     private
       
       def product_params
-        params.permit(:name, :product_sku, :brand, :category, :price)
+        params.permit(:image_url, :name, :product_sku, :brand, :category, :price)
       end
       
 end

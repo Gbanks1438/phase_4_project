@@ -1,20 +1,22 @@
-// import { Link } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 
 function Navbar() {
+    
  return (
         <div className="Navbar">
         <nav>
             <ul>
                 <li className='nav-links'>Account</li>
                 <li className='nav-links'>Home
-                    {/* <Link to='/'>Home</Link> */}
+                    {/* <NavLink to='/'>Home</NavLink> */}
                 </li>
                 <li className='nav-links'>Cart
-                    {/* <Link to='/shopping_cart'>Cart</Link> */}
+                    {/* <NavLink to='/shopping_cart'>Cart</NavLink> */}
                 </li>
             </ul>
         </nav>
         </div>
         );
     }
+
 export default Navbar;

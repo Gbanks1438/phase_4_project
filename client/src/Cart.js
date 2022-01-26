@@ -7,6 +7,10 @@ function Cart({shoppingCartArray, removeCardFromCart}) {
         removeCardFromCart(eachProduct)
     }
 
+    function buyButtonClicked() {
+      console.log("Buy Button Pressed")
+    }
+
     return (
     <div className="Cart">
     <img src={logo2} className="App-logo" alt="Shopping cart logo" />
@@ -20,6 +24,10 @@ function Cart({shoppingCartArray, removeCardFromCart}) {
           />
         })
       }
+      <br/>
+      <button onClick={() => 
+                buyButtonClicked()
+                }>Buy</button>
     </div>
   );
 }

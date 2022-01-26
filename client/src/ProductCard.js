@@ -8,6 +8,7 @@ function ProductCard({eachProduct, productCardClicked}) {
         productCardClicked(eachProduct)
         }>
             <img src={image} className="Image" alt="Manhatoobly" />
+            {/* <img src={eachProduct.image_url} className="Image" alt="Product listing" /> */}
 
             <table>
                 <thead>
