@@ -1,32 +1,14 @@
 import image from './Images/Manhatoobly.jpeg';
-import { useState } from 'react';
 
-function Card({eachProduct}) {
-
-      const [shoppingCartArray, setShoppingCartArray] = useState([]);
-
-        function ProductFromListClicked(eachProduct) {
-            console.log("A product was clicked: ", eachProduct.id)
-            let checkForDupes = shoppingCartArray.find((aProduct)=>{return aProduct.id === eachProduct.id})
-                if (checkForDupes === undefined) 
-                    {setShoppingCartArray([...shoppingCartArray, eachProduct])
-                    console.log("Did we setShoppingCartArray? ", setShoppingCartArray)
-                    // return ( 
-                    //     <div> 
-                    //         <Card
-                    //         key={eachProduct.id} // For React
-                    //         eachProduct={eachProduct} // For Us
-                    //         />
-                    //     </div>  
-                    // )
-                    }
-                else 
-                    {console.log("Product is already in the cart!");}
-        }
+function ProductCard({eachProduct, productCardClicked}) {
 
     return (
-        <div className="Card-div" onClick={() => ProductFromListClicked(eachProduct)}>
-        <img src={image} className="Image" alt="Manhatoobly" />
+        <div className="Card-div" 
+        onClick={() => 
+        productCardClicked(eachProduct)
+        }>
+            <img src={image} className="Image" alt="Manhatoobly" />
+
             <table>
                 <thead>
                     <tr>
@@ -66,4 +48,4 @@ function Card({eachProduct}) {
     );
     }
     
-export default Card;
+export default ProductCard;
