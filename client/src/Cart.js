@@ -1,25 +1,12 @@
-import logo from './Images/shop-logo.jpeg';
-import Card from './Card.js';
+import logo2 from './Images/shopping-cart-logo.png';
 
-function Cart({products}) {
+function Cart() {
     return (
-        <div>
-             <img src={logo} className="App-logo" alt="logo" />
+    <div className="Cart">
+    <img src={logo2} className="App-logo" alt="Shopping cart logo" />
+    <h2>Checkout</h2>
+    </div>
+  );
+}
 
-        {products.map((eachProduct)=>{
-                     return ( 
-                         <div> 
-                     <Card
-                        key={eachProduct.id} // For React
-                        aProduct={eachProduct} // For Us
-                     
-                        />
-                        </div>  
-                        )
-                     }   )
-                 }
-        </div>
-    );
-    }
-    
-    export default Cart;
+export default Cart;

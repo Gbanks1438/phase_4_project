@@ -1,9 +1,9 @@
 function Account() {
     return (
-        <div>
-            <button>Sign In</button>
-            <br/><br/><br/>
-            <button>Create Account</button>
+        <div className="Account">
+            <br/><br/>
+            <button className="Button">Create Account</button>
+            <button className="Button">Sign In</button>
         </div>
          );
     }
