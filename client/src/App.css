@@ -7,8 +7,9 @@
   min-height: 35vh;
   display: flex;
   flex-direction: column;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(12px + 2vmin);
   color: #5C5F5E;
+  text-shadow: gray 0px 0px 10px;
 }
 
 .App-logo {
@@ -20,8 +21,8 @@
   font-weight: bold;
   font-size: calc(6px + 2vmin);
   display: inline;
-  padding-left: 5px;
-  float:left;
+  margin: 5%;
+  text-shadow: purple 0px 0px 25px;
 }
 
 table {
@@ -40,10 +41,8 @@ th, td {
 .Button {
   background-color: #C0C2C9;
   color: black;
-  font-size: calc(4px + 1vmin);
+  font-size: calc(6px + 1vmin);
   font-weight: bold;
-  margin: 2px;
-  float: right;
 }
 
 .Card-div {
@@ -52,4 +51,17 @@ th, td {
 
 .Cart {
   margin-top: 75px;
+}
+
+.Product-card {
+box-shadow: 1px 1px 5px 3px grey;
+}
+
+.Login {
+  text-align: center;
+  background-color: white;
+  flex-direction: column;
+  font-size: calc(12px + 2vmin);
+  color: #5C5F5E;
+  text-shadow: gray 0px 0px 10px;
 }

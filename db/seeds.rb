@@ -1,11 +1,11 @@
 puts "🏕 Seeding customers..."
-customer1 = Customer.create(first_name: 'Caitlin', last_name: "Bonks", email_address: "noone@nowhere.com")
-customer2 = Customer.create(first_name: 'Grogory', last_name: "Baker", email_address: "notwo@nowhere.com")
-customer3 = Customer.create(first_name: 'Mollory', last_name: "Snow", email_address: "nothree@nowhere.com")
-customer4 = Customer.create(first_name: 'Minifer', last_name: "Snow", email_address: "nofour@nowhere.com")
-customer5 = Customer.create(first_name: 'Ressica', last_name: "Evanswom", email_address: "nofive@nowhere.com")
-customer6 = Customer.create(first_name: 'Even', last_name: "Whoson", email_address: "nosix@nowhere.com")
-customer7 = Customer.create(first_name: 'JaHanta', last_name: "Inkdom", email_address: "noseven@nowhere.com")
+customer1 = Customer.create(first_name: 'Caitlin', last_name: "Bonks", email_address: "noone@nowhere.com", password: "123Works4me$")
+customer2 = Customer.create(first_name: 'Grogory', last_name: "Baker", email_address: "notwo@nowhere.com", password: "123Works4me$")
+customer3 = Customer.create(first_name: 'Mollory', last_name: "Snow", email_address: "nothree@nowhere.com", password: "123Works4me$")
+customer4 = Customer.create(first_name: 'Minifer', last_name: "Snow", email_address: "nofour@nowhere.com", password: "123Works4me$")
+customer5 = Customer.create(first_name: 'Ressica', last_name: "Evanswom", email_address: "nofive@nowhere.com", password: "123Works4me$")
+customer6 = Customer.create(first_name: 'Even', last_name: "Whoson", email_address: "nosix@nowhere.com", password: "123Works4me$")
+customer7 = Customer.create(first_name: 'JaHanta', last_name: "Inkdom", email_address: "noseven@nowhere.com", password: "Trythi$1")
 
 puts "🏕 Seeding sales..."
 

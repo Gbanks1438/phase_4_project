@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :sales, only: [:index, :show] 
   resources :products, only: [:index, :show, :update]
   resources :customers, only: [:index, :show, :create, :update, :destroy]
+  resources :sessions, only: [:create, :destroy]
+  resources :users, only: [:show]
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

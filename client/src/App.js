@@ -1,30 +1,64 @@
 import './App.css';
 import ProductList from './ProductList.js';
 import Header from './Header.js';
-import Account from './Account.js';
+import Login from './Login.js';
 import Navbar from './Navbar.js';
 import Cart from './Cart.js';
 import { useEffect, useState } from 'react';
+import { Route, Routes } from "react-router-dom";
 
 function App() {
 
-  const [ productsArray, setProducts ] = useState( [] )
-  
+  const [productsArray, setProducts] = useState( [] )
+  const [shoppingCartArray, setShoppingCartArray] = useState([]);
+  const [user, setUser] = useState(null);
+
     useEffect( 
       ()=>{        
-        // fetch("http://localhost:3000/products")
-        fetch("https://cataas.com/api/cats?tags=cute")
+        fetch("/products", {
+          mode: 'cors',
+          headers: {'Access-Control-Allow-Origin':'*'}
+        })
+        // fetch("https://cataas.com/api/cats?tags=cute")
         .then( r => r.json() )
         .then(
         (fetchedProductsArray)=>{
-          // console.log("fetchedProductsArray: ", fetchedProductsArray) 
         setProducts( [ ...fetchedProductsArray ] )
           }
         )
       }
     , [] )
 
-    const [shoppingCartArray, setShoppingCartArray] = useState([]);
+//This makes the user sign in first!!!
+  //   useEffect(() => {
+  //     fetch("/me").then((response) => {
+  //       if (response.ok) {
+  //       response.json().then((user) => setUser(user));
+  //       }
+  //     });
+  //   }, []);
+
+  // if (user) {
+  //   return <h2>Welcome, {user.username}!</h2>;
+  // } else {
+  //   return <Login onLogin={setUser} />;
+  // }
+
+    useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  function handleLogin(user) {
+    setUser(user);
+  }
+
+  function handleLogout() {
+    setUser(null);
+  }
 
     function productCardClicked(eachProduct) {
       console.log("A product was clicked: ", eachProduct.id)
@@ -46,18 +80,31 @@ function App() {
 
   return (
     <div className="App">
-      <Account />
       <Navbar />
-      <Header />
-      <ProductList 
-      productsArray={productsArray}
-      productCardClicked={productCardClicked}
-      />
-      <Cart
-      shoppingCartArray={shoppingCartArray}
-      productCardClicked={productCardClicked}
-      removeCardFromCart={removeCardFromCart}
-      />
+
+      <Routes>
+
+        <Route path='/account' element={<Login />} />
+
+        <Route path='/' element={<Header />} />
+        
+        <Route path='/products' element={
+          <ProductList 
+          productsArray={productsArray}
+          productCardClicked={productCardClicked}
+          />
+        } />
+   
+        <Route path='/cart' element={
+          <Cart
+          shoppingCartArray={shoppingCartArray}
+          productCardClicked={productCardClicked}
+          removeCardFromCart={removeCardFromCart}
+          />
+        } />
+
+      </Routes>
+
     </div>
   );
 }

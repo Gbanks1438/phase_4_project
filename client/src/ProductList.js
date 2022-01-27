@@ -1,14 +1,13 @@
-import logo from './Images/shop-logo.jpeg';
 import ProductCard from './ProductCard.js';
 
 function ProductList({productsArray, productCardClicked}) {
 
     return (
         <div>
-        <img src={logo} className="App-logo" alt="Product list logo" />
+        <h2>Available Creations:</h2>
         {productsArray.map((eachProduct)=>{
             return ( 
-                <div> 
+                <div className="Product-card"> 
                 <ProductCard
                 key={eachProduct.id} // For React
                 eachProduct={eachProduct} // For Us

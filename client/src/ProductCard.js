@@ -1,5 +1,3 @@
-import image from './Images/Manhatoobly.jpeg';
-
 function ProductCard({eachProduct, productCardClicked}) {
 
     return (
@@ -7,8 +5,7 @@ function ProductCard({eachProduct, productCardClicked}) {
         onClick={() => 
         productCardClicked(eachProduct)
         }>
-            <img src={image} className="Image" alt="Manhatoobly" />
-            {/* <img src={eachProduct.image_url} className="Image" alt="Product listing" /> */}
+            <img src={eachProduct.image_url} className="Image" alt="Product listing" />
 
             <table>
                 <thead>
@@ -23,24 +20,19 @@ function ProductCard({eachProduct, productCardClicked}) {
                 <tbody>
                     <tr>
                         <td>
-                        {eachProduct.id}
-                        {/* {eachProduct.name} */}
+                        {eachProduct.name}
                         </td>
                         <td>
-                        {eachProduct.tags}
-                        {/* {eachProduct.brand} */}
+                        {eachProduct.brand}
                         </td>
                         <td>
-                        {eachProduct.id}
-                        {/* {eachProduct.price} */}
+                        {eachProduct.price}
                         </td>
                         <td>
-                          {eachProduct.tags}
-                        {/* {eachProduct.category} */}
+                        {eachProduct.category}
                         </td>
                         <td>
-                         {eachProduct.id}
-                        {/* {eachProduct.product_sku} */}
+                        {eachProduct.product_sku}
                         </td>
                     </tr>
                 </tbody>

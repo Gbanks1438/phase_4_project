@@ -1,5 +1,6 @@
-import logo2 from './Images/shopping-cart-logo.png';
 import ProductCard from './ProductCard.js';
+import logo from './Images/shop-logo.jpeg';
+import { useState } from 'react';
 
 function Cart({shoppingCartArray, removeCardFromCart}) {
 
@@ -7,14 +8,38 @@ function Cart({shoppingCartArray, removeCardFromCart}) {
         removeCardFromCart(eachProduct)
     }
 
+    const [id, setId] = useState("");
+    const [date_of_sale, setDate_of_sale] = useState("");
+    const [total, setTotal] = useState("");
+
     function buyButtonClicked() {
-      console.log("Buy Button Pressed")
+      console.log("Buy button was clicked!")
+  
+        const sale = { id, date_of_sale, total };
+
+        fetch("/sales", {
+            method: 'POST',
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(sale)
+        }).then(() => {
+            console.log("A new sale was added");
+        })
+
+        // HOW TO MAKE IT RENDER AN EMPTY CART AFTER?
+        return (
+          <Cart />
+        )
     }
+
+  //   const buyBtn = document.querySelector("#buy-button")
+
+  //     buyBtn.addEventListener("click", () => {
+  //   alert("Enjoy your creatures responsibly 👾");
+  // })
 
     return (
     <div className="Cart">
-    <img src={logo2} className="App-logo" alt="Shopping cart logo" />
-    <h2>Checkout</h2>
+     <img src={logo} className="App-logo" alt="Product list logo" />
     {
       shoppingCartArray.map((eachProduct)=>{
         return <ProductCard
@@ -25,9 +50,12 @@ function Cart({shoppingCartArray, removeCardFromCart}) {
         })
       }
       <br/>
+      <h1>Checkout:</h1>
+      <div>Cart Total = ?</div>
+      <br/>
       <button onClick={() => 
-                buyButtonClicked()
-                }>Buy</button>
+                buyButtonClicked()} 
+                id="buy-button">Buy</button>
     </div>
   );
 }

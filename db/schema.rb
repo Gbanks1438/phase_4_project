@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2022_01_25_193542) do
   end
 
   create_table "sales", force: :cascade do |t|
-    t.string "date_of_sale"
     t.float "total"
     t.bigint "customer_id", null: false
     t.bigint "product_id", null: false
