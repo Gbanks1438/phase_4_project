@@ -1,17 +1,23 @@
 class CustomersController < ApplicationController
-
+    # before_action :authorized
+    # skip_before_action :authorize, only: :create
+    
     def index
         render json: Customer.all
     end
 
     def show
-        customer = Customer.find_by_id(params[:id])
-        if customer
-            render json: customer
-        else
-            render json: {"error": "Customer not found"}, status: :not_found
-        end
+        render json: @current_user
     end
+
+    # def show
+    #     customer = Customer.find_by_id(params[:id])
+    #     if customer
+    #         render json: customer
+    #     else
+    #         render json: {"error": "Customer not found"}, status: :not_found
+    #     end
+    # end
 
     def create
         new_customer = Customer.new(customer_params)
@@ -45,8 +51,12 @@ class CustomersController < ApplicationController
     private
 
     def customer_params
-        params.permit(:first_name, :last_name, :email_address)
+        params.permit(:username, :password, :password_confirmation)
     end
+
+    # def authorized
+    #     return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+    #   end
     
 end
  

@@ -1,5 +1,5 @@
 class SaleSerializer < ActiveModel::Serializer
-  attributes :id, :date_of_sale, :total
+  attributes :id, :total
   has_one :customer
-  has_one :product
+  has_many :product
 end

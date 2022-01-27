@@ -1,11 +1,11 @@
 puts "🏕 Seeding customers..."
-customer1 = Customer.create(first_name: 'Caitlin', last_name: "Bonks", email_address: "noone@nowhere.com", password: "123Works4me$")
-customer2 = Customer.create(first_name: 'Grogory', last_name: "Baker", email_address: "notwo@nowhere.com", password: "123Works4me$")
-customer3 = Customer.create(first_name: 'Mollory', last_name: "Snow", email_address: "nothree@nowhere.com", password: "123Works4me$")
-customer4 = Customer.create(first_name: 'Minifer', last_name: "Snow", email_address: "nofour@nowhere.com", password: "123Works4me$")
-customer5 = Customer.create(first_name: 'Ressica', last_name: "Evanswom", email_address: "nofive@nowhere.com", password: "123Works4me$")
-customer6 = Customer.create(first_name: 'Even', last_name: "Whoson", email_address: "nosix@nowhere.com", password: "123Works4me$")
-customer7 = Customer.create(first_name: 'JaHanta', last_name: "Inkdom", email_address: "noseven@nowhere.com", password: "Trythi$1")
+# customer1 = Customer.create(first_name: 'Caitlin', last_name: "Bonks", username: "noone@nowhere.com", password: "123Works4me$", password_confirmation:"")
+# customer2 = Customer.create(first_name: 'Grogory', last_name: "Baker", username: "notwo@nowhere.com", password: "123Works4me$", password_confirmation:"")
+# customer3 = Customer.create(first_name: 'Mollory', last_name: "Snow", username: "nothree@nowhere.com", password: "123Works4me$", password_confirmation:"")
+# customer4 = Customer.create(first_name: 'Minifer', last_name: "Snow", username: "nofour@nowhere.com", password: "123Works4me$", password_confirmation:"")
+# customer5 = Customer.create(first_name: 'Ressica', last_name: "Evanswom", username: "nofive@nowhere.com", password: "123Works4me$", password_confirmation:"")
+# customer6 = Customer.create(first_name: 'Even', last_name: "Whoson", username: "nosix@nowhere.com", password: "123Works4me$", password_confirmation:"")
+# customer7 = Customer.create(first_name: 'JaHanta', last_name: "Inkdom", username: "noseven@nowhere.com", password: "Trythi$1", password_confirmation:"")
 
 puts "🏕 Seeding sales..."
 

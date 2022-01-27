@@ -9,13 +9,12 @@ function Cart({shoppingCartArray, removeCardFromCart}) {
     }
 
     const [id, setId] = useState("");
-    const [date_of_sale, setDate_of_sale] = useState("");
     const [total, setTotal] = useState("");
 
     function buyButtonClicked() {
       console.log("Buy button was clicked!")
   
-        const sale = { id, date_of_sale, total };
+        const sale = { id, total };
 
         fetch("/sales", {
             method: 'POST',

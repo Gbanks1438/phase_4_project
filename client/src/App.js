@@ -1,9 +1,10 @@
 import './App.css';
 import ProductList from './ProductList.js';
 import Header from './Header.js';
-import Login from './Login.js';
+import Account from './Account.js';
 import Navbar from './Navbar.js';
 import Cart from './Cart.js';
+// import Login from './Login.js';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from "react-router-dom";
 
@@ -19,7 +20,6 @@ function App() {
           mode: 'cors',
           headers: {'Access-Control-Allow-Origin':'*'}
         })
-        // fetch("https://cataas.com/api/cats?tags=cute")
         .then( r => r.json() )
         .then(
         (fetchedProductsArray)=>{
@@ -29,21 +29,18 @@ function App() {
       }
     , [] )
 
-//This makes the user sign in first!!!
-  //   useEffect(() => {
-  //     fetch("/me").then((response) => {
-  //       if (response.ok) {
-  //       response.json().then((user) => setUser(user));
-  //       }
-  //     });
-  //   }, []);
+  //   // auto-login version
+  //     useEffect(() => {
+  //   fetch("/me").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => setUser(user));
+  //     }
+  //   });
+  // }, []);
 
-  // if (user) {
-  //   return <h2>Welcome, {user.username}!</h2>;
-  // } else {
-  //   return <Login onLogin={setUser} />;
-  // }
+  // if (!user) return <Login onLogin={setUser} />;
 
+        // //v2
     useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
@@ -84,7 +81,7 @@ function App() {
 
       <Routes>
 
-        <Route path='/account' element={<Login />} />
+        <Route path='/account' element={<Account setUser={setUser}/>} />
 
         <Route path='/' element={<Header />} />
         
