@@ -15,7 +15,7 @@ class CustomersController < ApplicationController
     #     if customer
     #         render json: customer
     #     else
-    #         render json: {"error": "Customer not found"}, status: :not_found
+    #         render json: {error: "Customer not found"}, status: :not_found
     #     end
     # end
 
@@ -24,7 +24,7 @@ class CustomersController < ApplicationController
         if new_customer.save
             render json: new_customer, status: :created
         else
-            render json: {"errors": new_customer.errors.full_messages}, status: :unprocessable_entity
+            render json: {errors: new_customer.errors.full_messages}, status: :unprocessable_entity
         end
     end
 
@@ -34,7 +34,7 @@ class CustomersController < ApplicationController
           customer.update(customer_params)
           render json: customer
         else
-          render json: { "error": "Customer not found" }, status: :not_found
+          render json: { error: "Customer not found" }, status: :not_found
         end
     end
 
@@ -44,7 +44,7 @@ class CustomersController < ApplicationController
             customer_to_delete.destroy
             head :no_content
         else
-            render json: {"error": "Customer not found"}, status: :not_found
+            render json: {error: "Customer not found"}, status: :not_found
         end
     end
 
@@ -56,7 +56,7 @@ class CustomersController < ApplicationController
 
     # def authorized
     #     return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
-    #   end
+    # end
     
 end
  

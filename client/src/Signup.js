@@ -1,17 +1,14 @@
 import { useState } from 'react';
 
-function Create({ onLogin }) {
+function Signup({ onLogin }) {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
     function handleCreate(e) {
      e.preventDefault();
-    setErrors([]);
-    setIsLoading(true);
     fetch("/signup", {
       method: "POST",
       headers: {
@@ -22,14 +19,8 @@ function Create({ onLogin }) {
         password,
         password_confirmation: passwordConfirmation,
       }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => onLogin(user));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
+    }).then((r) => r.json())
+      .then(onLogin);
   }
 
      return (
@@ -48,11 +39,10 @@ function Create({ onLogin }) {
       <br/>
       <label>Password</label>
        <input
-        type="text"
+        type="password"
         id="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        autoComplete="current-password"
       />
       <br/>
        <label>Confirm Password</label>
@@ -61,20 +51,14 @@ function Create({ onLogin }) {
         id="password_confirmation"
         value={passwordConfirmation}
         onChange={(e) => setPasswordConfirmation(e.target.value)}
-        autoComplete="current-password"
       />
       <br/>
       {/* <button type="submit" className="Button">Submit</button> */}
        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-        {/* <form>
-        {errors.map((err) => (
-          <error key={err}>{err}</error>
-        ))}
-      </form> */}
     </form>
          </div>
     );
 
 }
 
-export default Create;
+export default Signup;

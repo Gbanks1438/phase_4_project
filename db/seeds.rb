@@ -1,4 +1,5 @@
 puts "🏕 Seeding customers..."
+customerTesting = Customer.create(username: "noone@nowhere.com", password: "Trythi$1")
 # customer1 = Customer.create(first_name: 'Caitlin', last_name: "Bonks", username: "noone@nowhere.com", password: "123Works4me$", password_confirmation:"")
 # customer2 = Customer.create(first_name: 'Grogory', last_name: "Baker", username: "notwo@nowhere.com", password: "123Works4me$", password_confirmation:"")
 # customer3 = Customer.create(first_name: 'Mollory', last_name: "Snow", username: "nothree@nowhere.com", password: "123Works4me$", password_confirmation:"")

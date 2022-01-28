@@ -1,20 +1,57 @@
 import Login from './Login.js';
-import Create from './Create.js';
+import Signup from './Signup.js';
 import { useState } from 'react';
 
-function Account({setUser}) {
+function Account({setUser, onLogin}) {
 
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+//THIS FUNCTION IS PROBABLY NOT CORRECT
+  function handleUpdate(e) {
+     e.preventDefault();
+    setErrors([]);
+    setIsLoading(true);
+    fetch("/signup", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        password,
+        password_confirmation: passwordConfirmation,
+      }),
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((user) => onLogin(user));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+  }
+
+  function handleDelete() {
+    //  e.preventDefault();
+    fetch("/me", { 
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json',
+    },
+  }).then((r) => r.json())
+      // .then(onLogin);
+  }
 
      return (
          <div>
-         <Login />
+         <Login setUser={setUser}/>
          <h1>Manage Account</h1>
-         <Create />
+         <Signup />
          <h3>Update Password</h3>
          <form 
-    // onSubmit={handleUpdate}
+    onSubmit={handleUpdate}
     >
       <br/>
       <label>Password</label>
@@ -38,7 +75,9 @@ function Account({setUser}) {
       <h3>My Sales</h3>
       <div><p>Figure out how to list a users sales here!</p></div>
       <h3>Delete Account</h3>
-      <button type="submit" className="Button">YES, DELETE MY ACCOUNT!</button>
+      <button type="submit" className="Button" 
+      onClick={handleDelete}
+      >YES, DELETE MY ACCOUNT!</button>
          </div>
     );
 

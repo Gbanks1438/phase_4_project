@@ -4,8 +4,8 @@ class Customer < ApplicationRecord
 
     has_secure_password
 
-    validates :username, :password, presence: true
-    validates :username, uniqueness: true
+    validates :username, :password, :password_confirmation, presence: true
+    # validates :username, uniqueness: true
     validates :username, :password, :password_confirmation, length: { in: 0..50 }
 end
 

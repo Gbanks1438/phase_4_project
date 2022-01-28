@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Login({ onLogin, onLogout }) {
+function Login({ onLogin, onLogout, setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -24,21 +24,21 @@ function Login({ onLogin, onLogout }) {
       }
     });
   }
-
-      function handleLogout() {
-    fetch("/logout", {
-      method: "DELETE",
-    }).then(() => onLogout());
-  }
+  //       //V1
+  //     function handleLogout() {
+  //   fetch("/logout", {
+  //     method: "DELETE",
+  //   }).then(() => onLogout());
+  // }
 
       ////V2
-  //   function handleLogoutClick() {
-  //   fetch("/logout", { method: "DELETE" }).then((r) => {
-  //     if (r.ok) {
-  //       setUser(null);
-  //     }
-  //   });
-  // }
+    function handleLogout() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+      }
+    });
+  }
 
   return (
     <div className="Login">

@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  # before_action :authorized
+  # skip_before_action :authorized, only: :index
 
     def index
         render json: Product.all
@@ -28,5 +30,9 @@ class ProductsController < ApplicationController
       def product_params
         params.permit(:image_url, :name, :product_sku, :brand, :category, :price)
       end
+
+      # def authorized
+      #   return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+      # end
       
 end
