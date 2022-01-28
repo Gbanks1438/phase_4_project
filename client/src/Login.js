@@ -35,13 +35,13 @@ function Login({ onLogin, onLogout, setUser }) {
   }
 
   //       //V1
-      function handleLogout() {
-    fetch("/logout", {
-      method: "DELETE",
-    }).then(() => 
-    setUser(null));
-    // onLogout());
-  }
+  //     function handleLogout() {
+  //   fetch("/logout", {
+  //     method: "DELETE",
+  //   }).then(() => 
+  //   setUser(null));
+  //   // onLogout());
+  // }
 
       //    //V2
   //   function handleLogout() {
@@ -51,6 +51,15 @@ function Login({ onLogin, onLogout, setUser }) {
   //     // }
   //   });
   // }
+  
+  // // FROM SENG LECTURE SOLUTION CODE
+  const handleLogout = () => {
+    fetch("/logout", {
+      method: 'DELETE'
+    })
+    console.log('logged out')
+    setUser(null);
+  }
 
   return (
     <div className="Login">

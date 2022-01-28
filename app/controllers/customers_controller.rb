@@ -41,8 +41,7 @@ class CustomersController < ApplicationController
     end
 
     def destroy
-        customer_to_delete = Customer.find_by_id(params[:id])
-        # if customer_to_delete
+        customer_to_delete = Customer.find(params[:id])
             customer_to_delete.destroy
             head :no_content
         # else
