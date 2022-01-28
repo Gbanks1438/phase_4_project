@@ -6,39 +6,51 @@ function Login({ onLogin, onLogout, setUser }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-      function handleSubmit(e) {
-      e.preventDefault();
-      setIsLoading(true);
-      fetch("/login", {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => onLogin(user));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
-  }
-  //       //V1
-  //     function handleLogout() {
-  //   fetch("/logout", {
-  //     method: "DELETE",
-  //   }).then(() => onLogout());
+  ////CANVAS VERSION
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   fetch("/login", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ username, password }),
+  //   }).then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => setUser(user));
+  //     }
+  //   });
   // }
 
-      ////V2
-    function handleLogout() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null);
-      }
-    });
+
+  function handleSubmit() {
+    fetch("/login", {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username, password }),
+  }).then( r => r.json() )
+  .then((user) => onLogin(user));
   }
+
+  //       //V1
+      function handleLogout() {
+    fetch("/logout", {
+      method: "DELETE",
+    }).then(() => 
+    setUser(null));
+    // onLogout());
+  }
+
+      //    //V2
+  //   function handleLogout() {
+  //   fetch("/logout", { method: "DELETE" }).then((r) => {
+  //     // if (r.ok) {
+  //       setUser(null);
+  //     // }
+  //   });
+  // }
 
   return (
     <div className="Login">
@@ -64,11 +76,6 @@ function Login({ onLogin, onLogout, setUser }) {
       <br/>
       {/* <button type="submit" className="Button">Login</button> */}
       <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
-        <form>
-        {errors.map((err) => (
-          <error key={err}>{err}</error>
-        ))}
-      </form>
     </form>
     <br/>
       <button onClick={handleLogout} className="Button">Logout</button>

@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   # before_action :authorized
   # skip_before_action :authorized, only: :index
 
+    # CRUD = Read
     def index
         render json: Product.all
     end

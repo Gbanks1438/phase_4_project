@@ -6,22 +6,24 @@ class CustomersController < ApplicationController
         render json: Customer.all
     end
 
-    def show
-        render json: @current_user
-    end
-
     # def show
-    #     customer = Customer.find_by_id(params[:id])
-    #     if customer
-    #         render json: customer
-    #     else
-    #         render json: {error: "Customer not found"}, status: :not_found
-    #     end
+    #     render json: @current_user
     # end
 
+    def show
+        # customer = Customer.find_by_id(params[:id])
+        if current_user
+            render json: current_user, status: :ok
+        else
+            render json: {error: "Not Logged In"}, status: :unauthorized
+        end
+    end
+
+    # CRUD = Create
     def create
         new_customer = Customer.new(customer_params)
         if new_customer.save
+            session[:user_id] = new_customer.id
             render json: new_customer, status: :created
         else
             render json: {errors: new_customer.errors.full_messages}, status: :unprocessable_entity
@@ -40,12 +42,12 @@ class CustomersController < ApplicationController
 
     def destroy
         customer_to_delete = Customer.find_by_id(params[:id])
-        if customer_to_delete
+        # if customer_to_delete
             customer_to_delete.destroy
             head :no_content
-        else
-            render json: {error: "Customer not found"}, status: :not_found
-        end
+        # else
+            # render json: {error: "Customer not found"}, status: :not_found
+        # end
     end
 
     private
