@@ -1,3 +1,9 @@
+ABOUT:
+This is a simple shopping app with a user login functionality. After a user has created an account and signed in, they will be able to see the products and click to add them to a cart. The main focus of this project was to learn about authentication and authorization utilizing the Bcrypt Gem. I learned about the importance of hashing a salted password to prevent security issues with plaintext storage of sensitive information. There is no functional transaction capabilities on the SPA, so the products do not get totaled up and there is no mock payment functionality. 
+
+The project was built as a Monorepo and comes with all the code needed to host it on Heroku, although currently it is not being made available online. I used Javascript React V6 for the frontend to create interactivity, and the styling is kept minimalistic with basic HTML formatting and some CSS. My Backend uses Ruby on Rails and I used Postgresql to interact with my database. ActiveModel serializers were used to quickly put together my app structure and I tested using the Pry Gem throughout development.
+
+
 # Project Template: React/Rails API
 
 ## Description
